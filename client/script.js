@@ -20,7 +20,6 @@ prev.addEventListener('click', () => {
             currentIndex = 0
         }
         moveCarousel()
-        console.log(currentIndex)
 })
 
 next.addEventListener('click', () => {
@@ -30,14 +29,12 @@ next.addEventListener('click', () => {
         return;
     }
     moveCarousel()
-    console.log(currentIndex)
 })
 
 function moveCarousel() {
     const position = -currentIndex * (slideWidth / 2)
-    innerCarousel.style.transition = 'transform .3s ease-in-out'
+    innerCarousel.style.transition = 'transform .5s ease-in-out'
     innerCarousel.style.transform = `translateX(${position}px)`;
-    console.log(position)
   }
 
 window.addEventListener('resize', updateCarousel)

@@ -2,11 +2,10 @@ const Router = require(`express`).Router()
 
 
 const CabRouter = require(`./cabsimRouter`)
-const OverdriveRouter = require(`./overdriveRouter`)
-const ModulationRouter = require(`./modulationRouter`)
+const EffectRouter = require(`./effectRouter`)
+
 
 Router.use(`/cabsims`, CabRouter)
-Router.use(`/overdrives`, OverdriveRouter)
-Router.use(`/modulators`, ModulationRouter)
+Router.use(`/effect`, EffectRouter)
 
 module.exports = Router
