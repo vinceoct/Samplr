@@ -21,28 +21,25 @@ body{
 
 
 #c1{
-    background-image: url("../assets/images/SublimeOctaver.jpg");
+    background-image: url("../assets/images/LEOBASS.jpeg");
 }
 
 #c2{
-    background-image: url("../assets/images/HallReverb.jpg");
+    background-image: url("../assets/images/B3K.jpeg");
 }
 
 #c3{
-    background-image: url("../assets/images/LeoBass.jpg");
+    background-image: url("../assets/images/SUBLIME.jpg");
 }
 
 #c4{
-    background-image: url("../assets/images/MicrotubesB3K.jpg");
+    background-image: url("../assets/images/SWRL810.jpeg");
 }
 
 #c5{
-    background-image: url("../assets/images/Darkglass412.jpg")
+    background-image: url("../assets/images/DG412.jpg")
 }
 
-#c6{
-    background-image: url("../assets/images/SWRL810.jpg");
-}
 
 
 .carousel {
