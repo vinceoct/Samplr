@@ -33,7 +33,7 @@ next.addEventListener('click', () => {
 
 function moveCarousel() {
     const position = -currentIndex * (slideWidth / 2)
-    innerCarousel.style.transition = 'transform .5s ease-in-out'
+    innerCarousel.style.transition = 'transform 1s ease-in'
     innerCarousel.style.transform = `translateX(${position}px)`;
   }
 

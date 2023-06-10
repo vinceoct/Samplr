@@ -1,16 +1,13 @@
 const mongoose = require(`mongoose`)
-const { Schema } = mongoose.Schema
+const Schema = mongoose.Schema
 const db = require(`../db`)
 
 const mailinglistSchema = new Schema(
     {    
-        name: { Type: String, Required: True }, 
-        emailAddress:{ Type: String, Required: True },
-        comment: { Type: String, Required: True },
+        name: { type: String, required: true }, 
+        emailAddress:{ type: String, required: true },
+        comment: { type: String, required: true },
     }
 )
-
-
-
 
 module.exports = mailinglistSchema

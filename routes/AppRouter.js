@@ -1,6 +1,5 @@
 const Router = require(`express`).Router()
 
-
 const CabRouter = require(`./cabsimRouter`)
 const EffectRouter = require(`./effectRouter`)
 

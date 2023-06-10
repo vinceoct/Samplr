@@ -1,16 +1,14 @@
 const mongoose = require(`mongoose`)
-const  Schema  = mongoose.Schema
+const Schema  = mongoose.Schema
 const db = require(`../db`)
 
-const cabSchema = new Schema(
+const cabsimSchema = new Schema(
     {
-        name: { Type: String, Required: True },
-        mic: { Type: String, Required: True},
-        image: { Type: String, Required: True }
-    }
+        name: { type: String, required: true },
+        mic: { type: String, required: true},
+        image: { type: String, required: true }
+    },
+    { timestamps: true }
 )
 
-
-
-
-module.exports = cabSchema
+module.exports = cabsimSchema
