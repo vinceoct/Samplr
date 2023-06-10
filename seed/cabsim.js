@@ -1,5 +1,5 @@
 const db = require('../db')
-const Cabsim = require('../models/cabsim')
+const { Cabsim } = require('../models')
 
 const main = async () => {
     const cabsims = [
@@ -14,13 +14,13 @@ const main = async () => {
             image: "placeholder"
         }
     ]
-    await Cabsim.deleteMany()
+    //await Cabsim.deleteMany()
     await Cabsim.insertMany(cabsims)
     console.log('Placed Cabs.') 
 }
 const run = async () => {
-await main()
-db.close()
+    await main()
+    db.close()
 }
 
 run()

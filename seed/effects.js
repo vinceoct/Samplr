@@ -1,5 +1,5 @@
 const db = require('../db')
-const Effect = require('../models/effect')
+const { Effect } = require('../models/effect')
 
 const main = async () => {
     const effects = [
