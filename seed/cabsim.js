@@ -14,7 +14,7 @@ const main = async () => {
             image: "placehttps://ibb.co/LYHT9q3holder"
         }
     ]
-    //await Cabsim.deleteMany()
+    await Cabsim.deleteMany()
     await Cabsim.insertMany(cabsims)
     console.log('Placed Cabs.') 
 }
