@@ -23,16 +23,16 @@ prev.addEventListener('click', () => {
 })
 
 next.addEventListener('click', () => {
-    if (currentIndex < 1) {
+    if (currentIndex < 2) {
     currentIndex++
-    } else if (currentIndex > 1) {
+    } else if (currentIndex > 2) {
         return;
     }
     moveCarousel()
 })
 
 function moveCarousel() {
-    const position = -currentIndex * (slideWidth / 2)
+    const position = -currentIndex * (slideWidth / 4)
     innerCarousel.style.transition = 'transform 1s ease-in'
     innerCarousel.style.transform = `translateX(${position}px)`;
   }

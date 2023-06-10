@@ -12,10 +12,10 @@ body{
     height: 300px;
     width: 300px;
     background-color: #eceff8;
-    background-size: 200px;
+    background-size: 100%;
     background-repeat: no-repeat;
     background-position: 50%;
-    background-position-y: 25%;
+    background-position-y: 50%;
 }
 
 #c1{
