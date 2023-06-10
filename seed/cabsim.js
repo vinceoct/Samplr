@@ -11,7 +11,7 @@ const main = async () => {
         {
             name: "Darkglass 4X12",
             mic: "Dynamic 52, Position 2",
-            image: "placehttps://ibb.co/LYHT9q3holder"
+            image: "https://ibb.co/LYHT9q3"
         }
     ]
     await Cabsim.deleteMany()
