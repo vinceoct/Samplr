@@ -44,7 +44,16 @@ window.addEventListener('resize', updateCarousel)
 
 updateCarousel()
 
+function removePlayer() {
+    const SCPlayer = document.querySelector('.SCPlayer')
+    if (SCPlayer) {
+    SCPlayer.parentNode.removeChild(SCPlayer)
+}
+}
+
+
 test.addEventListener('click', async() => {
+    removePlayer()
     const getAudioData = async (audioName) => {
     try {
         const response = await axios.get(`http://localhost:3001/api/audio/name/${audioName}`, {responseType: 'arraybuffer'})
