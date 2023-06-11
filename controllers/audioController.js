@@ -22,7 +22,23 @@ const getAudioById = async (req, res) => {
         return res.status(500).send(e.message)
     }
 }
+
+const getAudioByName = async (req, res) => {
+    try {
+        const { value } = req.params
+        const audio = await Audio.findOne({ name: value })
+        if(audio) {
+            res.set('Content-Type', 'audio/mpeg')
+            return res.send(audio.data)
+        }
+        return res.status(404).send('audio does not exist')
+    }catch (e){
+        return res.status(500).send(e.message)
+    }
+}
+
 module.exports = {
     getAllAudio,
-    getAudioById
+    getAudioById,
+    getAudioByName
 }

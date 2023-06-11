@@ -12,9 +12,9 @@ const main = async () => {
         '/Users/vincentvullo/Desktop/e500-Sampler/assets/audiofiles/B3KOCT.mp3',
         '/Users/vincentvullo/Desktop/e500-Sampler/assets/audiofiles/B3KOCTC1.mp3',
         '/Users/vincentvullo/Desktop/e500-Sampler/assets/audiofiles/B3KOCTC2.mp3',
-        '/Users/vincentvullo/Desktop/e500-Sampler/assets/audiofiles/C1.mp3',
-        '/Users/vincentvullo/Desktop/e500-Sampler/assets/audiofiles/C2.mp3',
-        '/Users/vincentvullo/Desktop/e500-Sampler/assets/audiofiles/1CLEAN.mp3',
+        '/Users/vincentvullo/Desktop/e500-Sampler/assets/audiofiles/CAB1.mp3',
+        '/Users/vincentvullo/Desktop/e500-Sampler/assets/audiofiles/CAB2.mp3',
+        '/Users/vincentvullo/Desktop/e500-Sampler/assets/audiofiles/CLEAN.mp3',
         '/Users/vincentvullo/Desktop/e500-Sampler/assets/audiofiles/OCTC1.mp3',
         '/Users/vincentvullo/Desktop/e500-Sampler/assets/audiofiles/OCTC2.mp3',
         '/Users/vincentvullo/Desktop/e500-Sampler/assets/audiofiles/OCT.mp3',
@@ -39,7 +39,7 @@ const main = async () => {
             const data = await fs.readFile(filePath) 
             
             const audio = new Audio({
-                name: filePath.split('/').pop(),
+                name: filePath.split('/').pop().replace('.mp3', ''),
                 data: data,
             })
         
