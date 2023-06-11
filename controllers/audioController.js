@@ -14,7 +14,8 @@ const getAudioById = async (req, res) => {
         const { id } = req.params
         const audio = await Audio.findById(id)
         if(audio) {
-            return res.status(200).json({ audio })
+            res.set('Content-Type', 'audio/mpeg')
+            return res.send(audio.data)
         }
         return res.status(404).send('audio does not exist')
     }catch (e){

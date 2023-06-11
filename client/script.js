@@ -1,7 +1,9 @@
+
 let carousel = document.querySelector('.carousel')
 let innerCarousel = document.querySelector('.inner-carousel')
 const prev = document.querySelector('.prev')
 const next = document.querySelector('.next')
+const test = document.querySelector('.test')
 let slideWidth 
 let currentIndex = 0
 
@@ -40,3 +42,28 @@ function moveCarousel() {
 window.addEventListener('resize', updateCarousel)
 
 updateCarousel()
+
+test.addEventListener('click', async() => {
+    const getAudioData = async (audioId) => {
+    try {
+        const response = await axios.get(`http://localhost:3001/api/audio/${audioId}`, {responseType: 'arraybuffer'})
+        return response.data
+    } catch (error) {
+      console.error(error)        
+    }
+}
+    const newAudioPlayer = (audioData) => {
+        const audioPlayer = document.createElement('audio')
+        audioPlayer.src = URL.createObjectURL(new Blob([audioData]))
+        audioPlayer.controls = true
+        document.body.appendChild(audioPlayer)
+    }
+    const audioId = '6484b9e1992392f0918d3ae8'
+    getAudioData(audioId)
+        .then((audioData) => {
+            newAudioPlayer(audioData)
+        }) 
+        .catch((error) => {
+            console.error(error)
+        })
+})
