@@ -4,6 +4,7 @@ let innerCarousel = document.querySelector('.inner-carousel')
 const prev = document.querySelector('.prev')
 const next = document.querySelector('.next')
 const test = document.querySelector('.test')
+const SCcode = document.querySelector('.SCcode')
 let slideWidth 
 let currentIndex = 0
 
@@ -44,9 +45,9 @@ window.addEventListener('resize', updateCarousel)
 updateCarousel()
 
 test.addEventListener('click', async() => {
-    const getAudioData = async (audioId) => {
+    const getAudioData = async (audioName) => {
     try {
-        const response = await axios.get(`http://localhost:3001/api/audio/${audioId}`, {responseType: 'arraybuffer'})
+        const response = await axios.get(`http://localhost:3001/api/audio/name/${audioName}`, {responseType: 'arraybuffer'})
         return response.data
     } catch (error) {
       console.error(error)        
@@ -56,10 +57,11 @@ test.addEventListener('click', async() => {
         const audioPlayer = document.createElement('audio')
         audioPlayer.src = URL.createObjectURL(new Blob([audioData]))
         audioPlayer.controls = true
+        audioPlayer.classList.add("SCPlayer")
         document.body.appendChild(audioPlayer)
     }
-    const audioId = '6484b9e1992392f0918d3afa'
-    getAudioData(audioId)
+    const audioName = SCcode.value
+    getAudioData(audioName)
         .then((audioData) => {
             newAudioPlayer(audioData)
         }) 
