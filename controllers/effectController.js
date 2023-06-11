@@ -23,7 +23,20 @@ const getEffectsById = async (req, res) => {
     }
 }
 
+const getEffectByCode = async (req, res) => {
+    try {
+        const { value } = req.params
+        const effect = await Effect.find({ code: value })
+        if(effect) {
+            return res.status(200).json({ effect })
+        }
+        return res.status(404).send('effect does not exist')
+    }catch (e){
+        return res.status(500).send(e.message)
+    }
+}
 module.exports = {
     getAllEffects,
-    getEffectsById
+    getEffectsById,
+    getEffectByCode
 }

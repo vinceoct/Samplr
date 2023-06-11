@@ -23,9 +23,23 @@ const getCabsimById = async (req, res) => {
     }
 }
 
+const getCabsimByCode = async (req, res) => {
+    try {
+        const { value } = req.params
+        const cabsim = await Cabsim.find({ code: value })
+        if(cabsim) {
+            return res.status(200).json({ cabsim })
+        }
+        return res.status(404).send('cabsim does not exist')
+    }catch (e){
+        return res.status(500).send(e.message)
+    }
+}
+
 module.exports = {
     getAllCabsims,
-    getCabsimById
+    getCabsimById,
+    getCabsimByCode
 }
 
 
