@@ -5,7 +5,6 @@ const prev = document.querySelector('.prev')
 const next = document.querySelector('.next')
 const test = document.querySelector('.test')
 const scCode = document.querySelector('.scCode')
-const card = document.querySelector('.card')
 let slideWidth 
 let currentIndex = 0
 
@@ -50,19 +49,23 @@ function removePlayer() {
     if (SCPlayer) {
     SCPlayer.parentNode.removeChild(SCPlayer)
 }
-}
-const getCode = async () => {
-    const response = await axios.get('http://localhost:3001/api/effect')
-    console.log(response)        
-}   
+}  
 
-
-innerCarousel.addEventListener('click', () => {
-    console.log('clicked a card')
-})
-
- function sendcode(card) {
-     console.log('clicked a card', card.id)        
+async function sendcode(card) {
+    const responseEffect = await axios.get('http://localhost:3001/api/effect')
+    const responseCabsim = await axios.get('http://localhost:3001/api/cabsims')      
+    if (card.id === 'c1') {
+        scCode.value += responseEffect.data.effects[1].code
+    }else if(card.id === 'c2') {
+        scCode.value += responseEffect.data.effects[0].code
+    }else if(card.id === 'c3') {
+        scCode.value += responseEffect.data.effects[2].code
+    }else if(card.id === 'c4') {
+        scCode.value += responseCabsim.data.cabsims[0].code
+    }else if(card.id === 'c5') {
+        scCode.value += responseCabsim.data.cabsims[1].code
+    }
+          
  }
 
 

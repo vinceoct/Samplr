@@ -52,6 +52,7 @@ body{
     transform: translate(-50%, -50%);
     overflow: hidden;
     background-color: transparent; 
+    z-index: -1;
 }
 
 .inner-carousel {
@@ -60,11 +61,10 @@ body{
     justify-content: space-around;
     align-items: center;
     gap: 10px;
-    pointer-events: none;
     position: absolute;
     top: 0;
     left: 0;
-    z-index: -1;
+    z-index: 1;
     margin: auto 0;
     background-color: transparent;
 }
