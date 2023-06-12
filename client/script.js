@@ -4,7 +4,8 @@ let innerCarousel = document.querySelector('.inner-carousel')
 const prev = document.querySelector('.prev')
 const next = document.querySelector('.next')
 const test = document.querySelector('.test')
-const SCcode = document.querySelector('.SCcode')
+const scCode = document.querySelector('.scCode')
+const card = document.querySelector('.card')
 let slideWidth 
 let currentIndex = 0
 
@@ -36,7 +37,7 @@ next.addEventListener('click', () => {
 
 function moveCarousel() {
     const position = -currentIndex * (slideWidth / 4)
-    innerCarousel.style.transition = 'transform 1s ease-in'
+    innerCarousel.style.transition = 'transform .3s ease-in'
     innerCarousel.style.transform = `translateX(${position}px)`;
   }
 
@@ -50,6 +51,21 @@ function removePlayer() {
     SCPlayer.parentNode.removeChild(SCPlayer)
 }
 }
+const getCode = async () => {
+    const response = await axios.get('http://localhost:3001/api/effect')
+    console.log(response)        
+}   
+
+
+innerCarousel.addEventListener('click', () => {
+    console.log('clicked a card')
+})
+
+ function sendcode(card) {
+     console.log('clicked a card', card.id)        
+ }
+
+
 
 
 test.addEventListener('click', async() => {
@@ -69,7 +85,7 @@ test.addEventListener('click', async() => {
         audioPlayer.classList.add("SCPlayer")
         document.body.appendChild(audioPlayer)
     }
-    const audioName = SCcode.value
+    const audioName = scCode.value
     getAudioData(audioName)
         .then((audioData) => {
             newAudioPlayer(audioData)
