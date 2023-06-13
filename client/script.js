@@ -131,8 +131,8 @@ test.addEventListener('click', async() => {
         })
     const cards = document.querySelectorAll('.card')
     const clearButton = document.createElement('BUTTON')
-        clearButton.classList.add('clear')
-        clearButton.innerText = "RESET"
+        clearButton.classList.add('buttons')
+        clearButton.innerText = "CLEAR"
         userInput.appendChild(clearButton)
         clearButton.addEventListener('click', () => {
             audioPlayer.remove()
@@ -142,5 +142,5 @@ test.addEventListener('click', async() => {
             card.style.boxShadow = ""
             card.style.animation = ""
         })
-    })
+        })
 })
