@@ -12,8 +12,9 @@ const getAllMessages = async (req, res) => {
 
 const createMessage = async (req, res) => {
     try {
-        const newmessage = await MailingList.find()
-        return res.status(200).json({ newmessage })
+        const newmessage = await new MailingList(req.body)
+        await newmessage.save()
+        return res.status(201).json({ newmessage, })
     } catch (error) {
         return res.status(500).send(error.message)
     }

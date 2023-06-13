@@ -5,6 +5,7 @@ const prev = document.querySelector('.prev')
 const next = document.querySelector('.next')
 const test = document.querySelector('.test')
 const scCode = document.querySelector('.scCode')
+const userInput = document.querySelector('.userinput')
 let slideWidth 
 let currentIndex = 0
 
@@ -45,34 +46,65 @@ window.addEventListener('resize', updateCarousel)
 updateCarousel()
 
 function removePlayer() {
-    const SCPlayer = document.querySelector('.SCPlayer')
-    if (SCPlayer) {
-    SCPlayer.parentNode.removeChild(SCPlayer)
+    const scPlayer = document.querySelector('.scPlayer')
+    if (scPlayer) {
+    userInput.removeChild(scPlayer)
 }
 }  
 
 async function sendcode(card) {
+    const value = scCode.value
     const responseEffect = await axios.get('http://localhost:3001/api/effect')
     const responseCabsim = await axios.get('http://localhost:3001/api/cabsims')      
-    if (card.id === 'c1') {
-        scCode.value += responseEffect.data.effects[1].code
-    }else if(card.id === 'c2') {
-        scCode.value += responseEffect.data.effects[0].code
-    }else if(card.id === 'c3') {
-        scCode.value += responseEffect.data.effects[2].code
-    }else if(card.id === 'c4') {
-        scCode.value += responseCabsim.data.cabsims[0].code
-    }else if(card.id === 'c5') {
-        scCode.value += responseCabsim.data.cabsims[1].code
-    }
-          
- }
+    card.style.boxShadow = "0 0 8px green, inset 0 0 8px green"
+    card.style.animation = "pulse 1s linear 1s infinite"
+    console.log(card.id)
+    
+    const removeCode = (code) => {
+        scCode.value = scCode.value.replace(code, '');
+        card.style.boxShadow = '';
+        card.style.animation = '';
+      }
 
+    const addCode = (code) => {
+        scCode.value += code;
+      }
+    
+      const handleClick = (code, index) => {
+        if (!scCode.value.includes(code)) {
+          addCode(code);
+        } else {
+          removeCode(code);
+        }
+      }
+    switch (card.id) {
+    case 'c1':
+        handleClick(responseEffect.data.effects[1].code);
+        break;
+    case 'c2':
+        handleClick(responseEffect.data.effects[0].code);
+        break;
+    case 'c3':
+        handleClick(responseEffect.data.effects[2].code);
+        break;
+    case 'c4':
+        handleClick(responseCabsim.data.cabsims[0].code);
+        break;
+    case 'c5':
+        handleClick(responseCabsim.data.cabsims[1].code);
+        break;
+    default:
+        break;
+    }
+
+}
+
+const button = document.createElement('BUTTON')
 
 
 
 test.addEventListener('click', async() => {
-    removePlayer()
+
     const getAudioData = async (audioName) => {
     try {
         const response = await axios.get(`http://localhost:3001/api/audio/name/${audioName}`, {responseType: 'arraybuffer'})
@@ -81,12 +113,13 @@ test.addEventListener('click', async() => {
       console.error(error)        
     }
 }
+    let audioPlayer
     const newAudioPlayer = (audioData) => {
-        const audioPlayer = document.createElement('audio')
+        audioPlayer = document.createElement('audio')
         audioPlayer.src = URL.createObjectURL(new Blob([audioData]))
         audioPlayer.controls = true
-        audioPlayer.classList.add("SCPlayer")
-        document.body.appendChild(audioPlayer)
+        audioPlayer.classList.add("scPlayer")
+        userInput.appendChild(audioPlayer)
     }
     const audioName = scCode.value
     getAudioData(audioName)
@@ -96,4 +129,18 @@ test.addEventListener('click', async() => {
         .catch((error) => {
             console.error(error)
         })
+    const cards = document.querySelectorAll('.card')
+    const clearButton = document.createElement('BUTTON')
+        clearButton.classList.add('clear')
+        clearButton.innerText = "RESET"
+        userInput.appendChild(clearButton)
+        clearButton.addEventListener('click', () => {
+            audioPlayer.remove()
+            clearButton.remove()
+            scCode.value = ''
+        cards.forEach((card) => {
+            card.style.boxShadow = ""
+            card.style.animation = ""
+        })
+    })
 })

@@ -5,7 +5,7 @@ const db = require(`../db`)
 const mailinglistSchema = new Schema(
     {    
         name: { type: String, required: true }, 
-        emailAddress:{ type: String, required: true },
+        email:{ type: String, required: true },
         comment: { type: String, required: true },
     }
 )
