@@ -6,6 +6,7 @@ const next = document.querySelector('.next')
 const listen = document.querySelector('.listen')
 const scCode = document.querySelector('.scCode')
 const userInput = document.querySelector('.userinput')
+const here = document.getElementById('here')
 let slideWidth 
 let currentIndex = 0
 
@@ -53,6 +54,7 @@ function removePlayer() {
 }  
 
 function removeListen() {
+    const listen = document.querySelector('.listen')
     if (listen) {
         listen.removeEventListener('click', listenClick)
         listen.parentNode.removeChild(listen)
@@ -62,8 +64,8 @@ function removeListen() {
 async function sendcode(card) {
     const responseEffect = await axios.get('http://localhost:3001/api/effect')
     const responseCabsim = await axios.get('http://localhost:3001/api/cabsims')      
-    card.style.boxShadow = "1px 1px #4562ba, inset 0 0 8px #4562ba"
-    card.style.animation = "pulse 1s linear 1s infinite"
+    card.style.boxShadow = "1px 1px #4562ba, inset 0 0 28px #4562ba"
+    card.style.animation = "pulse 1s linear infinite"
     console.log(card.id)
     
     const removeCode = (code) => {
@@ -104,8 +106,6 @@ async function sendcode(card) {
     }
 
 }
-
-const button = document.createElement('BUTTON')
 
 function addListen(){
     const listen = document.createElement('BUTTON')
@@ -160,4 +160,50 @@ function listenClick() {
 }
 
 listen.addEventListener('click', listenClick)  
+
+
+
+here.addEventListener('click', () => {
+     const form = document.createElement('div')
+     form.setAttribute('id', 'form')
+     form.classList.add('animatetop')
+     document.body.appendChild(form)
+     
+     const header = document.createElement('h1')
+     header.setAttribute('id', 'header')
+     header.innerText = "Join our mailing list!"
+     form.appendChild(header)
+
+     const name = document.createElement('input')
+     name.setAttribute('id', 'name')
+     name.placeholder = 'NAME'
+     form.appendChild(name)
+
+     const email = document.createElement('input')
+     email.setAttribute('id', 'email')
+     email.type = 'email'
+     email.placeholder = 'EMAIL'
+     form.appendChild(email)
+
+     const comment = document.createElement('input')
+     comment.setAttribute('id', 'comment')
+     comment.placeholder = 'YOUR MESSAGE'
+     form.appendChild(comment)
+
+     const submit = document.createElement('button')
+     submit.setAttribute('id', 'submit')
+     submit.innerText = 'Submit'
+     form.appendChild(submit)
+
+     const close = document.createElement('button')
+     close.setAttribute('id', 'close')
+     close.innerText = "x"
+     form.appendChild(close)
+        close.addEventListener('click', () =>{
+            form.classList.remove("animatetop")
+            form.classList.add("animatebot")
+        })
+    }) 
+
+
 
