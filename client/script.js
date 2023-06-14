@@ -62,8 +62,8 @@ function removeListen() {
 }
 
 async function sendcode(card) {
-    const responseEffect = await axios.get('http://localhost:3001/api/effect')
-    const responseCabsim = await axios.get('http://localhost:3001/api/cabsims')      
+    const responseEffect = await axios.get('/api/effect')
+    const responseCabsim = await axios.get('/api/cabsims')      
     card.style.boxShadow = "1px 1px #4562ba, inset 0 0 28px #4562ba"
     card.style.animation = "pulse 1s linear infinite"
     console.log(card.id)
@@ -120,7 +120,7 @@ function listenClick() {
     removeListen()
     const getAudioData = async (audioName) => {
     try {
-        const response = await axios.get(`http://localhost:3001/api/audio/name/${audioName}`, {responseType: 'arraybuffer'})
+        const response = await axios.get(`/api/audio/name/${audioName}`, {responseType: 'arraybuffer'})
         return response.data
     } catch (error) {
       console.error(error)        
@@ -206,7 +206,7 @@ here.addEventListener('click', () => {
             }
 
             try {
-                const response = await axios.post('http://localhost:3001/api/mailinglist', submission)
+                const response = await axios.post('/api/mailinglist', submission)
                 const form = document.getElementById('form')
                 console.log(response.status)
                 if (response.status === 201) {

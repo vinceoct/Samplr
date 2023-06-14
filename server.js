@@ -11,7 +11,8 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-app.get('/', (req, res) => res.json({ message: 'Tone beyond this point'}))
+// app.get('/', (req, res) => res.json({ message: 'Tone beyond this point'}))
+app.use('/', express.static('client'))
 
 app.use('/api', AppRouter)
 app.listen(PORT, () => console.log(`Server Started On Port: ${PORT}`))
