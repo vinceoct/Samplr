@@ -1,4 +1,7 @@
 # Samplr
+
+<p align="center"> <img src="https://github.com/vinceoct/Samplr/blob/main/assets/readmegif/demo.gif"> </p>
+
 Welcome to Samplr! This application allows users to experiment with various bass effects and cabsims, as well as test combinations of these effects. Additionally, users can sign up for updates on new effects and features through our mailing list.
 
 ## Features
