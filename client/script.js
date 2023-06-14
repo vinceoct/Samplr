@@ -194,14 +194,51 @@ here.addEventListener('click', () => {
      submit.setAttribute('id', 'submit')
      submit.innerText = 'Submit'
      form.appendChild(submit)
+        submit.addEventListener('click', async () => {
+            const userName = name.value
+            const userEmail = email.value
+            const userComment = comment.value 
+
+            const submission = {
+                name: userName,
+                email: userEmail,
+                comment: userComment
+            }
+
+            try {
+                const response = await axios.post('http://localhost:3001/api/mailinglist', submission)
+                const form = document.getElementById('form')
+                console.log(response.status)
+                if (response.status === 201) {
+                    console.log('sent')
+                    const messageRec = document.createElement('div')
+                    messageRec.setAttribute('id', 'rec')
+                    form.appendChild(messageRec)
+                        const gotIt = document.createElement('h2')
+                        gotIt.setAttribute('id', 'gotit')
+                        gotIt.innerText = 'Thank you for signing up!'
+                        messageRec.appendChild(gotIt)
+
+                        const x = document.createElement('button')
+                        x.setAttribute('id', 'x')
+                        x.innerText = 'X'
+                        messageRec.appendChild(x)
+                            x.addEventListener('click', () => {
+                                document.body.removeChild(form)
+                            })
+
+                }
+            } catch (error) {
+                console.error('error signing up:', error)
+            }
+        })
 
      const close = document.createElement('button')
      close.setAttribute('id', 'close')
      close.innerText = "x"
      form.appendChild(close)
         close.addEventListener('click', () =>{
-            form.classList.remove("animatetop")
-            form.classList.add("animatebot")
+            document.body.removeChild(form)
         })
     }) 
 

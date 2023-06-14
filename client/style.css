@@ -186,7 +186,7 @@ footer{
 }
 #submit {
     height: 10%;
-    width: 50%;
+    width: 45%;
     font-size: 40px;
     border-radius: 10px;
 }
@@ -267,3 +267,35 @@ p{
     font-size: 20px;
     padding: 0;
 }
+
+#rec{
+    height: 40%;
+    width: 50%;
+    background-color: #1c274a;  
+    position: absolute;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 100%
+}
+
+#gotit{
+    font-size: 48px;
+}
+
+#x{
+    height: 6%;
+    width: 5%;
+    position: absolute;
+    top: 5%;
+    right: 3%;
+    border: none;
+    border-radius: 5px;
+    font-family: 'bebas neue';
+    font-size: 18px;
+    padding: 0;
+    background-color: #a2b1dd;
+    color: #1c274a;
+}
+
