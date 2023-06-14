@@ -122,10 +122,10 @@ h1 {
 .scCode{
     position: fixed;
     bottom: 30%;
-    z-index: 1;
-    background-color: white;
+    z-index: -1;
+    background-color: transparent;
     border: none;
-    color: black
+    color: transparent
 
 }
 
