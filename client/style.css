@@ -1,22 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Geologica:wght@200&family=Saira+Extra+Condensed&display=swap');
+
 body{
-    background: rgb(24,24,25);
-    background: linear-gradient(161deg, rgba(24,24,25,1) 18%, rgba(118,120,124,1) 100%);  
+    background: rgb(14,20,37);
+    background: linear-gradient(315deg, rgba(14,20,37,1) 30%, rgba(28, 39, 74, 1) 66%, rgba(162,177,221,1) 100%);  
     height: 100%;
     margin: 0;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    color: #eceff8;
+    font-family: 'Bebas Neue';
+    color: #a2b1dd;
     text-align: center;
 }
-
+h1 {
+    font-size: 84px;
+    padding-top: 30px;
+    text-shadow: 1px 1px #1c274a ;
+}
+#amp {
+    color: #dae0f1
+}
+/* 
+#dae0f1
+#a2b1dd
+#4562ba
+#2d417b
+#1c274a
+#0e1425
+ */
 @keyframes pulse {
-    0% { box-shadow:0 0 8px green, inset 0 0 8px green; }
-    50% { box-shadow:0 0 16px green, inset 0 0 14px green; }
-    100% { box-shadow:0 0 8px green, inset 0 0 8px green; }
+    0% { box-shadow: 1px 1px #4562ba, inset 0 0 8px 3px #4562ba; }
+    50% { box-shadow: 1px 1px #4562ba, inset 0 0 28px 10px #4562ba; }
+    100% { box-shadow: 1px 1px #4562ba, inset 0 0 8px 3px #4562ba; }
   }
 
 .card {
-    height: 200px;
+    height: 190px;
     width: 100%;
     background-color: #eceff8;
     background-size: 130px;
@@ -25,6 +43,8 @@ body{
     background-position-y: 50%;
     background-color:eceff8;
     border-radius: 10px;
+    box-shadow: 1px 1px #4562ba;
+    
 }
 
 #c1{
@@ -71,7 +91,7 @@ body{
     align-items: center;
     gap: 10px;
     position: absolute;
-    top: 0;
+    top: 4px;
     left: 0;
     z-index: 1;
     margin: auto 0;
@@ -86,7 +106,7 @@ body{
     top: 80px;
     padding: 0px;
     margin: 0px;
-    background-color: rgba(0,0,0,.35);
+    background-color: rgba(69, 98, 186, .45);
     border: none;
     color: #eceff8
 }
@@ -100,7 +120,7 @@ body{
 }
 .scCode{
     position: fixed;
-    bottom: 25%;
+    bottom: 28%;
     z-index: -1
 }
 
@@ -109,23 +129,48 @@ body{
     height: 150px;
     position: absolute;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
-    top: 75%;
+    top: 65%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #2b2b2b;
+    background-color: #eceff8;
+    border-radius: 10px;
+    box-shadow: 1px 1px #4562ba;
 }
 
 .scPlayer::-webkit-media-controls-panel{
-    background-color: green;
+    background-color: #4562ba;
+    width: 60%;
 }
 
 footer{
     position: fixed;
     text-align: center;
     bottom: 0%;
-    color: blue;
     width: 100%;
     font-size: 14px;
+}
+
+.listen, .clear {
+    border: none;
+    color: #dae0f1;
+    background-color:rgba(69, 98, 186, 1);
+    font-family: 'bebas neue';
+    
+}
+.listen {
+    height: 40%;
+    width: 60%;
+    font-size: 36px;
+}
+.clear {
+    border: none;
+    height: 37%;
+    width: 20%;
+    color: #2d417b;
+    background-color: #4562ba;
+    border-radius: 25px;
+    font-size: 28px;
+    text-align: center;
 }

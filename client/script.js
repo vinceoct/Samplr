@@ -3,7 +3,7 @@ let carousel = document.querySelector('.carousel')
 let innerCarousel = document.querySelector('.inner-carousel')
 const prev = document.querySelector('.prev')
 const next = document.querySelector('.next')
-const test = document.querySelector('.test')
+const listen = document.querySelector('.listen')
 const scCode = document.querySelector('.scCode')
 const userInput = document.querySelector('.userinput')
 let slideWidth 
@@ -52,11 +52,17 @@ function removePlayer() {
 }
 }  
 
+function removeListen() {
+    if (listen) {
+        listen.removeEventListener('click', listenClick)
+        listen.parentNode.removeChild(listen)
+}
+}
+
 async function sendcode(card) {
-    const value = scCode.value
     const responseEffect = await axios.get('http://localhost:3001/api/effect')
     const responseCabsim = await axios.get('http://localhost:3001/api/cabsims')      
-    card.style.boxShadow = "0 0 8px green, inset 0 0 8px green"
+    card.style.boxShadow = "1px 1px #4562ba, inset 0 0 8px #4562ba"
     card.style.animation = "pulse 1s linear 1s infinite"
     console.log(card.id)
     
@@ -101,10 +107,17 @@ async function sendcode(card) {
 
 const button = document.createElement('BUTTON')
 
+function addListen(){
+    const listen = document.createElement('BUTTON')
+    listen.innerText = 'Listen'
+    listen.classList.add('listen')
+    listen.addEventListener('click', listenClick)
+    userInput.appendChild(listen)
+}
 
-
-test.addEventListener('click', async() => {
-
+function listenClick() {
+    removePlayer()
+    removeListen()
     const getAudioData = async (audioName) => {
     try {
         const response = await axios.get(`http://localhost:3001/api/audio/name/${audioName}`, {responseType: 'arraybuffer'})
@@ -131,10 +144,11 @@ test.addEventListener('click', async() => {
         })
     const cards = document.querySelectorAll('.card')
     const clearButton = document.createElement('BUTTON')
-        clearButton.classList.add('buttons')
+        clearButton.classList.add('clear')
         clearButton.innerText = "CLEAR"
         userInput.appendChild(clearButton)
         clearButton.addEventListener('click', () => {
+            addListen()
             audioPlayer.remove()
             clearButton.remove()
             scCode.value = ''
@@ -143,4 +157,7 @@ test.addEventListener('click', async() => {
             card.style.animation = ""
         })
         })
-})
+}
+
+listen.addEventListener('click', listenClick)  
+
