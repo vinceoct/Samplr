@@ -1,8 +1,8 @@
-const Router = require(`express`).Router()
-const controller = require(`../controllers/effectController`)
+const Router = require(`express`).Router();
+const controller = require(`../controllers/effectController`);
 
-Router.get('/', controller.getAllEffects)
-Router.get('/:id', controller.getEffectsById)
-Router.get('/code/:value', controller.getEffectByCode)
+Router.get("/", controller.getAllEffects);
+Router.get("/:id", controller.getEffectsById);
+Router.get("/code/:value", controller.getEffectByCode);
 
-module.exports = Router
+module.exports = Router;

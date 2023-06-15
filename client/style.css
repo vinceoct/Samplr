@@ -19,14 +19,7 @@ h1 {
 #amp {
     color: #dae0f1
 }
-/* 
-#dae0f1
-#a2b1dd
-#4562ba
-#2d417b
-#1c274a
-#0e1425
- */
+
 @keyframes pulse {
     0% { box-shadow: 1px 1px #4562ba, inset 0 0 8px 3px #4562ba; }
     50% { box-shadow: 1px 1px #4562ba, inset 0 0 28px 10px #4562ba; }
