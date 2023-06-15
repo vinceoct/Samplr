@@ -20,3 +20,17 @@ Welcome to Samplr! This application allows users to experiment with various bass
 - JavaScript: The primary programming language used for the backend and frontend development.
 - HTML: HTML is used for creating the structure and content of web pages.
 - CSS: CSS is utilized for styling and enhancing the visual presentation of the application.
+
+## Getting Started
+
+- Try out at Samplr [here](https://samplr-production.up.railway.app/)!
+- Select your effects, and up to one cabsim, then click 'Listen' to hear a demo of that tone!
+- You can find the ERD for the Samplr API [here](https://lucid.app/lucidchart/7384e022-36af-4414-92c4-145fc1e80a50/edit?beaconFlowId=37DB7EB48AF34FAC&invitationId=inv_7c6ed549-2245-4466-8efb-499048f50a4b&page=Nk75XQpp_NJx#)!
+- You can view my Trello [here](https://trello.com/b/DakvDjZg/samplr) to get an idea of what progress I'm making on new features!
+
+
+## Coming Soon
+
+- More bass lines, more effects and more cabsims to test out the capabilities of the [Darglass e500](https://www.darkglass.com/creation/exponent-500/)
+
+- User audio submissions: The ultimate goal for this app is to be a community built database for amp and effect demos! Soon users will be able to upload their own demos of pedals and amps.
