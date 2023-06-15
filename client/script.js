@@ -59,7 +59,7 @@ function removeListen() {
     listen.parentNode.removeChild(listen);
   }
 }
-
+let codes = [];
 async function sendcode(card) {
   const responseEffect = await axios.get("/api/effect");
   const responseCabsim = await axios.get("/api/cabsims");
@@ -73,17 +73,27 @@ async function sendcode(card) {
     card.style.animation = "";
   };
 
+  
   const addCode = (code) => {
-    scCode.value += code;
+    codes.push(code)
+    // scCode.value += code;
   };
 
   const handleClick = (code, index) => {
-    if (!scCode.value.includes(code)) {
-      addCode(code);
+    const index = codes.indexOf(code);
+    if (index !== -1) {
+      codes.splice(index, 1)
+      addCode(code)
     } else {
-      removeCode(code);
+      removeCode(code)
     }
-  };
+  }
+    //   if (!scCode.value.includes(code)) {
+  //     addCode(code);
+  //   } else {
+  //     removeCode(code);
+  //   }
+  // };
   switch (card.id) {
     case "c1":
       handleClick(responseEffect.data.effects[1].code);
@@ -134,7 +144,7 @@ function listenClick() {
     audioPlayer.classList.add("scPlayer");
     userInput.appendChild(audioPlayer);
   };
-  const audioName = scCode.value;
+  const audioName = codes.join('');
   getAudioData(audioName)
     .then((audioData) => {
       newAudioPlayer(audioData);
