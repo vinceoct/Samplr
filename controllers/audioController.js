@@ -37,8 +37,21 @@ const getAudioByName = async (req, res) => {
   }
 };
 
+const deleteAllAudio = async (req, res) => {
+  try {
+    const deleteAudio = await Audio.deleteMany();
+    if (deleteAudio) {
+      return res.status(200).send("cleared audio");
+    }
+    throw new Error("no messages found");
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+};
+
 module.exports = {
   getAllAudio,
   getAudioById,
   getAudioByName,
+  deleteAllAudio
 };

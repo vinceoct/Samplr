@@ -36,8 +36,32 @@ const getCabsimByCode = async (req, res) => {
   }
 };
 
+const createCabsim = async (req, res) => {
+  try {
+    const newCabsim = await new Cabsim(req.body);
+    await newCabsim.save();
+    return res.status(201).json({ newmessage });
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+};
+
+const deleteAllCabsims = async (req, res) => {
+  try {
+    const deleteCabsims = await Cabsim.deleteMany();
+    if (deleteCabsims) {
+      return res.status(200).send("cleared cabsims");
+    }
+    throw new Error("no messages found");
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+};
+
 module.exports = {
   getAllCabsims,
   getCabsimById,
   getCabsimByCode,
+  createCabsim,
+  deleteAllCabsims
 };

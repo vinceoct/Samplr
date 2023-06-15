@@ -35,8 +35,32 @@ const getEffectByCode = async (req, res) => {
     return res.status(500).send(e.message);
   }
 };
+
+const createEffect = async (req, res) => {
+  try {
+    const neweffect = await new Effect(req.body);
+    await neweffect.save();
+    return res.status(201).json({ newmessage });
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+};
+
+const deleteAllEffects = async (req, res) => {
+  try {
+    const deleteEffects = await Effect.deleteMany();
+    if (deleteEffects) {
+      return res.status(200).send("cleared effects");
+    }
+    throw new Error("no messages found");
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+};
 module.exports = {
   getAllEffects,
   getEffectsById,
   getEffectByCode,
+  createEffect,
+  deleteAllEffects
 };
